@@ -30,96 +30,6 @@
             font-weight: 700;
         }
 
-        /* Side Navigation */
-        .side-nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100vh;
-            width: 280px;
-            background: var(--secondary);
-            color: white;
-            padding: 2rem 0;
-            z-index: 1000;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .side-nav.active {
-            transform: translateX(0);
-        }
-
-        .nav-header {
-            padding: 0 1.5rem 2rem 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 1rem;
-        }
-
-        .nav-header h4 {
-            color: white;
-            margin: 0;
-        }
-
-        .nav-week {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-week:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .nav-week.active {
-            background: var(--primary);
-            border-left: 4px solid var(--accent);
-        }
-
-        .nav-week i {
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 0;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.with-nav {
-            margin-left: 280px;
-        }
-
-        /* Menu Toggle Button */
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-        }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
@@ -163,19 +73,6 @@
         }
 
         /* Section Styling */
-        .week-section {
-            display: none;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .week-section.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .section-title {
             position: relative;
             margin-bottom: 3rem;
@@ -244,6 +141,17 @@
             60% { transform: translateY(-5px); }
         }
 
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Footer */
         footer {
             background: var(--secondary);
@@ -280,115 +188,51 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary);
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .side-nav {
-                width: 100%;
-                transform: translateX(-100%);
-            }
-            
-            .main-content.with-nav {
-                margin-left: 0;
-            }
-            
-            .menu-toggle {
-                top: 10px;
-                left: 10px;
-            }
-        }
     </style>
 </head>
 <body>
-<!-- Side Navigation -->
-<div class="side-nav" id="sideNav">
-    <div class="nav-header">
-        <h4><i class="fab fa-android me-2"></i>Weekly Progress</h4>
-        <small class="text-muted">Android Development Journey</small>
-    </div>
-    
-    <div class="nav-week active" data-week="week1">
-        <i class="fas fa-code"></i>
-        <span>Week 1: Setup & Hello World</span>
-    </div>
-    
-    <div class="nav-week" data-week="week2">
-        <i class="fas fa-mobile-alt"></i>
-        <span>Week 2: UI Components</span>
-    </div>
-    
-    <div class="nav-week" data-week="week3">
-        <i class="fas fa-layer-group"></i>
-        <span>Week 3: Activities & Fragments</span>
-    </div>
-    
-    <div class="nav-week" data-week="week4">
-        <i class="fas fa-database"></i>
-        <span>Week 4: Data Storage</span>
-    </div>
-    
-    <div class="nav-week" data-week="week5">
-        <i class="fas fa-wifi"></i>
-        <span>Week 5: Networking & APIs</span>
-    </div>
-    
-    <div class="nav-week" data-week="about">
-        <i class="fas fa-user"></i>
-        <span>About Me</span>
-    </div>
-</div>
-
-<!-- Menu Toggle Button -->
-<button class="menu-toggle" id="menuToggle">
-    <i class="fas fa-bars"></i>
-</button>
-
-<!-- Main Content -->
-<div class="main-content" id="mainContent">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <div class="android-icon">
-                        <i class="fab fa-android"></i>
-                    </div>
-                    <h1 class="display-4 fw-bold">Lesley Machola</h1>
-                    <h2 class="h3 mb-4">Advanced Android Mobile Application Developer</h2>
-                    <p class="lead mb-4">Computer Systems Engineering Student at Botswana Accountancy College</p>
-                    <p class="mb-5">Welcome to my Android development journey portfolio. Here you'll find my progress through advanced Android development concepts, from setup to complex UI implementations.</p>
-                    <button class="btn btn-light btn-lg px-4 py-2" id="startJourney">
-                        Start Exploring Journey
-                    </button>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <div class="android-icon">
+                    <i class="fab fa-android"></i>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=200&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="profile-img">
-                </div>
+                <h1 class="display-4 fw-bold">Lesley Machola</h1>
+                <h2 class="h3 mb-4">Advanced Android Mobile Application Developer</h2>
+                <p class="lead mb-4">Computer Systems Engineering Student at Botswana Accountancy College</p>
+                <p class="mb-5">Welcome to my Android development journey portfolio. Here you'll find my progress through advanced Android development concepts, from setup to complex UI implementations.</p>
+                <a href="#week1" class="btn btn-light btn-lg px-4 py-2">Explore My Journey</a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=200&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="profile-img">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Week 1 Section -->
-    <section id="week1" class="week-section active py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Week 1: Android Studio Setup & Hello World</h2>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="week-card card">
-                        <div class="card-header">
-                            <h3 class="mb-0">Getting Started with Android Development</h3>
-                        </div>
-                        <div class="card-body p-4">
-                            <p>In the first week, I successfully installed Android Studio and configured the development environment. This included:</p>
-                            <ul>
-                                <li>Downloading and installing Android Studio</li>
-                                <li>Setting up the Android SDK and necessary tools</li>
-                                <li>Creating an Android Virtual Device (AVD) for testing</li>
-                                <li>Building and running my first "Hello World" application</li>
-                            </ul>
+<!-- Week 1 Section -->
+<section id="week1" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Week 1: Android Studio Setup & Hello World</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Getting Started with Android Development</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the first week, I successfully installed Android Studio and configured the development environment. This included:</p>
+                        <ul>
+                            <li>Downloading and installing Android Studio</li>
+                            <li>Setting up the Android SDK and necessary tools</li>
+                            <li>Creating an Android Virtual Device (AVD) for testing</li>
+                            <li>Building and running my first "Hello World" application</li>
+                        </ul>
 
-                            <h5 class="mt-4">Hello World Implementation</h5>
-                            <div class="code-block">
+                        <h5 class="mt-4">Hello World Implementation</h5>
+                        <div class="code-block">
                                 <pre><code>// MainActivity.java
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -400,9 +244,9 @@ public class MainActivity extends AppCompatActivity {
         helloText.setText("Hello World! Welcome to Android Development");
     }
 }</code></pre>
-                            </div>
+                        </div>
 
-                            <div class="code-block">
+                        <div class="code-block">
                                 <pre><code>&lt;!-- activity_main.xml --&gt;
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -420,25 +264,24 @@ public class MainActivity extends AppCompatActivity {
         android:textStyle="bold" /&gt;
 
 &lt;/LinearLayout&gt;</code></pre>
-                            </div>
+                        </div>
 
-                            <div class="mt-4">
-                                <h5>Key Learnings:</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Android Studio IDE navigation</li>
-                                            <li>Project structure understanding</li>
-                                            <li>Basic XML layout creation</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Running apps on emulator</li>
-                                            <li>Basic Java/Kotlin integration</li>
-                                            <li>Debugging fundamentals</li>
-                                        </ul>
-                                    </div>
+                        <div class="mt-4">
+                            <h5>Key Learnings:</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Android Studio IDE navigation</li>
+                                        <li>Project structure understanding</li>
+                                        <li>Basic XML layout creation</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Running apps on emulator</li>
+                                        <li>Basic Java/Kotlin integration</li>
+                                        <li>Debugging fundamentals</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -446,25 +289,26 @@ public class MainActivity extends AppCompatActivity {
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Week 2 Section -->
-    <section id="week2" class="week-section py-5">
-        <div class="container">
-            <h2 class="section-title">Week 2: UI Components & LinearLayout</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="week-card card">
-                        <div class="card-header">
-                            <h3 class="mb-0">Mastering Android UI Design</h3>
-                        </div>
-                        <div class="card-body p-4">
-                            <p>In the second week, I delved into Android UI components with a focus on LinearLayout. I learned to create responsive and visually appealing interfaces using various UI elements.</p>
+<!-- Week 2 Section -->
+<section id="week2" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Week 2: UI Components & LinearLayout</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Mastering Android UI Design</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the second week, I delved into Android UI components with a focus on LinearLayout. I learned to create responsive and visually appealing interfaces using various UI elements.</p>
 
-                            <h5 class="mt-4">LinearLayout Implementation Examples</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="code-block">
+                        <h5 class="mt-4">LinearLayout Implementation Examples</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="code-block">
                                         <pre><code>&lt;!-- Vertical LinearLayout Example --&gt;
 &lt;LinearLayout
     android:layout_width="match_parent"
@@ -502,10 +346,10 @@ public class MainActivity extends AppCompatActivity {
         android:textColor="@android:color/white" /&gt;
 
 &lt;/LinearLayout&gt;</code></pre>
-                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="code-block">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="code-block">
                                         <pre><code>&lt;!-- Horizontal LinearLayout Example --&gt;
 &lt;LinearLayout
     android:layout_width="match_parent"
@@ -549,34 +393,115 @@ public class MainActivity extends AppCompatActivity {
         android:textColor="@android:color/white" /&gt;
 
 &lt;/LinearLayout&gt;</code></pre>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="mt-4">
-                                <h5>UI Components Explored:</h5>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>TextViews and EditTexts</li>
-                                            <li>Buttons and ImageButtons</li>
-                                            <li>ImageViews</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>CheckBoxes and RadioButtons</li>
-                                            <li>Spinners and SeekBars</li>
-                                            <li>ProgressBars</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>ScrollViews</li>
-                                            <li>RecyclerViews (intro)</li>
-                                            <li>CardViews</li>
-                                        </ul>
-                                    </div>
+                        <h5 class="mt-4">Complex Layout with Weight</h5>
+                        <div class="code-block">
+                                <pre><code>&lt;!-- LinearLayout with weight property --&gt;
+&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;!-- Header Section --&gt;
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/primary"
+        android:padding="16dp"&gt;
+
+        &lt;TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="My App"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@android:color/white" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+    &lt;!-- Content Area with weighted distribution --&gt;
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"&gt;
+
+        &lt;!-- Left Panel --&gt;
+        &lt;ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"&gt;
+
+            &lt;LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"&gt;
+
+                &lt;!-- Navigation items would go here --&gt;
+
+            &lt;/LinearLayout&gt;
+
+        &lt;/ScrollView&gt;
+
+        &lt;!-- Right Panel --&gt;
+        &lt;ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"&gt;
+
+            &lt;LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"&gt;
+
+                &lt;!-- Main content would go here --&gt;
+
+            &lt;/LinearLayout&gt;
+
+        &lt;/ScrollView&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>UI Components Explored:</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>TextViews and EditTexts</li>
+                                        <li>Buttons and ImageButtons</li>
+                                        <li>ImageViews</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>CheckBoxes and RadioButtons</li>
+                                        <li>Spinners and SeekBars</li>
+                                        <li>ProgressBars</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>ScrollViews</li>
+                                        <li>RecyclerViews (intro)</li>
+                                        <li>CardViews</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -584,25 +509,26 @@ public class MainActivity extends AppCompatActivity {
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Week 3 Section -->
-    <section id="week3" class="week-section py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Week 3: Activities, Data Sharing & Fragments</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="week-card card">
-                        <div class="card-header">
-                            <h3 class="mb-0">Advanced Android Concepts</h3>
-                        </div>
-                        <div class="card-body p-4">
-                            <p>In the third week, I explored more complex Android concepts including Activity lifecycle, sharing data between components, and implementing ViewPager with Fragments for creating swipeable interfaces.</p>
+<!-- Week 3 Section -->
+<section id="week3" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Week 3: Activities, Data Sharing & Fragments</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Advanced Android Concepts</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the third week, I explored more complex Android concepts including Activity lifecycle, sharing data between components, and implementing ViewPager with Fragments for creating swipeable interfaces.</p>
 
-                            <h5 class="mt-4">Activity Implementation with Intent Data Sharing</h5>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="code-block">
+                        <h5 class="mt-4">Activity Implementation with Intent Data Sharing</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="code-block">
                                         <pre><code>// MainActivity.java - Sending data
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
@@ -630,10 +556,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }</code></pre>
-                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="code-block">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="code-block">
                                         <pre><code>// DetailActivity.java - Receiving and returning data
 public class DetailActivity extends AppCompatActivity {
     @Override
@@ -658,318 +584,219 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 }</code></pre>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-4">
-                                <h5>Key Concepts Mastered:</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Activity lifecycle management</li>
-                                            <li>Intent-based data sharing</li>
-                                            <li>Fragment creation and management</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>ViewPager implementation</li>
-                                            <li>TabLayout integration</li>
-                                            <li>Fragment communication patterns</li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Week 4 Section -->
-    <section id="week4" class="week-section py-5">
-        <div class="container">
-            <h2 class="section-title">Week 4: Data Storage & Room Database</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="week-card card">
-                        <div class="card-header">
-                            <h3 class="mb-0">Persistent Data Management</h3>
-                        </div>
-                        <div class="card-body p-4">
-                            <p>In week 4, I learned about different data storage options in Android, with a focus on Room Database for local storage and SharedPreferences for simple key-value pairs.</p>
+                        <h5 class="mt-4">Fragment Implementation with ViewPager</h5>
+                        <div class="code-block">
+                                <pre><code>// FragmentPagerAdapter implementation
+public class MyPagerAdapter extends FragmentPagerAdapter {
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> fragmentTitleList = new ArrayList<>();
 
-                            <h5 class="mt-4">Room Database Implementation</h5>
-                            <div class="code-block">
-                                <pre><code>// Entity class
-@Entity(tableName = "users")
-public class User {
-    @PrimaryKey(autoGenerate = true)
-    public int id;
-    
-    public String name;
-    public String email;
-    public String course;
-    
-    public User(String name, String email, String course) {
-        this.name = name;
-        this.email = email;
-        this.course = course;
+    public MyPagerAdapter(FragmentManager fm) {
+        super(fm);
     }
-}
 
-// DAO interface
-@Dao
-public interface UserDao {
-    @Insert
-    void insert(User user);
-    
-    @Query("SELECT * FROM users")
-    List<User> getAllUsers();
-    
-    @Query("SELECT * FROM users WHERE id = :userId")
-    User getUserById(int userId);
-}
+    public void addFragment(Fragment fragment, String title) {
+        fragmentList.add(fragment);
+        fragmentTitleList.add(title);
+    }
 
-// Database class
-@Database(entities = {User.class}, version = 1)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
+    @Override
+    public Fragment getItem(int position) {
+        return fragmentList.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return fragmentList.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return fragmentTitleList.get(position);
+    }
 }</code></pre>
+                        </div>
+
+                        <div class="code-block">
+                                <pre><code>// MainActivity with ViewPager and Fragments
+public class MainActivity extends AppCompatActivity {
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
+
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
+
+        // Add fragments with titles
+        adapter.addFragment(new ProfileFragment(), "Profile");
+        adapter.addFragment(new ProjectsFragment(), "Projects");
+        adapter.addFragment(new SkillsFragment(), "Skills");
+        adapter.addFragment(new ContactFragment(), "Contact");
+
+        viewPager.setAdapter(adapter);
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="code-block">
+                                <pre><code>// Example Fragment implementation
+public class ProfileFragment extends Fragment {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        // Initialize UI components
+        TextView nameText = view.findViewById(R.id.name_text);
+        TextView courseText = view.findViewById(R.id.course_text);
+
+        nameText.setText("Lesley Machola");
+        courseText.setText("Computer Systems Engineering - BAC");
+
+        return view;
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Key Concepts Mastered:</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Activity lifecycle management</li>
+                                        <li>Intent-based data sharing</li>
+                                        <li>Fragment creation and management</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>ViewPager implementation</li>
+                                        <li>TabLayout integration</li>
+                                        <li>Fragment communication patterns</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Week 5 Section -->
-    <section id="week5" class="week-section py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Week 5: Networking & REST API Integration</h2>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="week-card card">
-                        <div class="card-header">
-                            <h3 class="mb-0">Connecting to Web Services</h3>
-                        </div>
-                        <div class="card-body p-4">
-                            <p>Week 5 focused on networking concepts, including making HTTP requests, handling JSON responses, and integrating REST APIs using Retrofit and Volley libraries.</p>
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=300&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="img-fluid rounded-circle shadow" style="max-width: 250px;">
+            </div>
+            <div class="col-lg-8">
+                <h3>Lesley Machola</h3>
+                <p class="lead">Computer Systems Engineering Student</p>
+                <p>I'm a passionate Android developer currently pursuing Computer Systems Engineering at Botswana Accountancy College. My journey in mobile application development has been exciting, and I'm continuously expanding my skills in creating innovative and user-friendly applications.</p>
 
-                            <h5 class="mt-4">Retrofit Implementation</h5>
-                            <div class="code-block">
-                                <pre><code>// API Interface
-public interface ApiService {
-    @GET("users/{id}")
-    Call<User> getUser(@Path("id") int userId);
-    
-    @POST("users")
-    Call<User> createUser(@Body User user);
-}
-
-// Making API calls
-Retrofit retrofit = new Retrofit.Builder()
-    .baseUrl("https://api.example.com/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build();
-
-ApiService service = retrofit.create(ApiService.class);
-Call<User> call = service.getUser(1);
-call.enqueue(new Callback<User>() {
-    @Override
-    public void onResponse(Call<User> call, Response<User> response) {
-        if (response.isSuccessful()) {
-            User user = response.body();
-            // Update UI with user data
-        }
-    }
-    
-    @Override
-    public void onFailure(Call<User> call, Throwable t) {
-        // Handle error
-    }
-});</code></pre>
-                            </div>
-                        </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Education</h5>
+                        <ul>
+                            <li>Botswana Accountancy College</li>
+                            <li>Computer Systems Engineering</li>
+                            <li>Advanced Android Development</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Skills</h5>
+                        <ul>
+                            <li>Java & Kotlin Programming</li>
+                            <li>Android UI/UX Design</li>
+                            <li>REST API Integration</li>
+                            <li>Database Management (SQLite, Room)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="week-section py-5">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                    <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=300&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="img-fluid rounded-circle shadow" style="max-width: 250px;">
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <h4>Lesley Machola</h4>
+                <p>Android Developer & Computer Systems Engineering Student</p>
+                <p>Botswana Accountancy College</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <div class="social-icons mb-3">
+                    <a href="https://www.linkedin.com/in/lesley-machola-1351b2240/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/LesleyMachoal"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="http://localhost:63342/Lesley%20Eportfolio/index.html?_ijt=e8kj83mmce2d0ls6804k7mdth&_ij_reload=RELOAD_ON_SAVE"><i class="fab fa-android"></i></a>
                 </div>
-                <div class="col-lg-8">
-                    <h3>Lesley Machola</h3>
-                    <p class="lead">Computer Systems Engineering Student</p>
-                    <p>I'm a passionate Android developer currently pursuing Computer Systems Engineering at Botswana Accountancy College. My journey in mobile application development has been exciting, and I'm continuously expanding my skills in creating innovative and user-friendly applications.</p>
-
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <h5>Education</h5>
-                            <ul>
-                                <li>Botswana Accountancy College</li>
-                                <li>Computer Systems Engineering</li>
-                                <li>Advanced Android Development</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Skills</h5>
-                            <ul>
-                                <li>Java & Kotlin Programming</li>
-                                <li>Android UI/UX Design</li>
-                                <li>REST API Integration</li>
-                                <li>Database Management (SQLite, Room)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <p>&copy; 2025 Lesley Machola. All rights reserved.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <h4>Lesley Machola</h4>
-                    <p>Android Developer & Computer Systems Engineering Student</p>
-                    <p>Botswana Accountancy College</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="social-icons mb-3">
-                        <a href="https://www.linkedin.com/in/lesley-machola-1351b2240/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/LesleyMachoal"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="http://localhost:63342/Lesley%20Eportfolio/index.html?_ijt=e8kj83mmce2d0ls6804k7mdth&_ij_reload=RELOAD_ON_SAVE"><i class="fab fa-android"></i></a>
-                    </div>
-                    <p>&copy; 2025 Lesley Machola. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+    </div>
+</footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script>
+    // Animation on scroll
     document.addEventListener('DOMContentLoaded', function() {
-        const sideNav = document.getElementById('sideNav');
-        const menuToggle = document.getElementById('menuToggle');
-        const mainContent = document.getElementById('mainContent');
-        const navWeeks = document.querySelectorAll('.nav-week');
-        const weekSections = document.querySelectorAll('.week-section');
-        const startJourney = document.getElementById('startJourney');
+        const fadeElements = document.querySelectorAll('.fade-in');
 
-        // Toggle side navigation
-        menuToggle.addEventListener('click', function() {
-            sideNav.classList.toggle('active');
-            mainContent.classList.toggle('with-nav');
-            
-            // Change menu icon
-            const icon = this.querySelector('i');
-            if (sideNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Week navigation functionality
-        navWeeks.forEach(navWeek => {
-            navWeek.addEventListener('click', function() {
-                const targetWeek = this.getAttribute('data-week');
-                
-                // Update active nav item
-                navWeeks.forEach(nav => nav.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show target section
-                weekSections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetWeek) {
-                        section.classList.add('active');
-                    }
-                });
-                
-                // Close nav on mobile after selection
-                if (window.innerWidth <= 768) {
-                    sideNav.classList.remove('active');
-                    mainContent.classList.remove('with-nav');
-                    menuToggle.querySelector('i').classList.remove('fa-times');
-                    menuToggle.querySelector('i').classList.add('fa-bars');
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                
-                // Scroll to top of the section
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-
-        // Start journey button
-        startJourney.addEventListener('click', function() {
-            // Show week 1 section
-            weekSections.forEach(section => section.classList.remove('active'));
-            document.getElementById('week1').classList.add('active');
-            
-            // Update active nav
-            navWeeks.forEach(nav => nav.classList.remove('active'));
-            document.querySelector('.nav-week[data-week="week1"]').classList.add('active');
-            
-            // Scroll to week 1
-            window.scrollTo({
-                top: document.getElementById('week1').offsetTop - 20,
-                behavior: 'smooth'
-            });
-        });
-
-        // Close nav when clicking outside on mobile
-        document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768 && 
-                sideNav.classList.contains('active') &&
-                !sideNav.contains(event.target) && 
-                !menuToggle.contains(event.target)) {
-                sideNav.classList.remove('active');
-                mainContent.classList.remove('with-nav');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-            }
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                sideNav.classList.add('active');
-                mainContent.classList.add('with-nav');
-            } else {
-                sideNav.classList.remove('active');
-                mainContent.classList.remove('with-nav');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-            }
-        });
-
-        // Initialize for desktop
-        if (window.innerWidth > 768) {
-            sideNav.classList.add('active');
-            mainContent.classList.add('with-nav');
-        }
     });
 </script>
 </body>
