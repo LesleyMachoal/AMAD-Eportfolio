@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesley Machola - Android Developer Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #9b59b6;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            animation: float 20s infinite linear;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: profile-float 6s ease-in-out infinite;
+        }
+
+        .android-icon {
+            font-size: 3rem;
+            color: #a4c639;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Section Styling */
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .week-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .week-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .week-card .card-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-10px, -10px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        @keyframes profile-float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <div class="android-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h1 class="display-4 fw-bold">Lesley Machola</h1>
+                <h2 class="h3 mb-4">Advanced Android Mobile Application Developer</h2>
+                <p class="lead mb-4">Computer Systems Engineering Student at Botswana Accountancy College</p>
+                <p class="mb-5">Welcome to my Android development journey portfolio. Here you'll find my progress through advanced Android development concepts, from setup to complex UI implementations.</p>
+                <a href="#week1" class="btn btn-light btn-lg px-4 py-2">Explore My Journey</a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=200&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="profile-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Week 1 Section -->
+<section id="week1" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Week 1: Android Studio Setup & Hello World</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Getting Started with Android Development</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the first week, I successfully installed Android Studio and configured the development environment. This included:</p>
+                        <ul>
+                            <li>Downloading and installing Android Studio</li>
+                            <li>Setting up the Android SDK and necessary tools</li>
+                            <li>Creating an Android Virtual Device (AVD) for testing</li>
+                            <li>Building and running my first "Hello World" application</li>
+                        </ul>
+
+                        <h5 class="mt-4">Hello World Implementation</h5>
+                        <div class="code-block">
+                                <pre><code>// MainActivity.java
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView helloText = findViewById(R.id.hello_text);
+        helloText.setText("Hello World! Welcome to Android Development");
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="code-block">
+                                <pre><code>&lt;!-- activity_main.xml --&gt;
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"&gt;
+
+    &lt;TextView
+        android:id="@+id/hello_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="24sp"
+        android:textStyle="bold" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Key Learnings:</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Android Studio IDE navigation</li>
+                                        <li>Project structure understanding</li>
+                                        <li>Basic XML layout creation</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Running apps on emulator</li>
+                                        <li>Basic Java/Kotlin integration</li>
+                                        <li>Debugging fundamentals</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Week 2 Section -->
+<section id="week2" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Week 2: UI Components & LinearLayout</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Mastering Android UI Design</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the second week, I delved into Android UI components with a focus on LinearLayout. I learned to create responsive and visually appealing interfaces using various UI elements.</p>
+
+                        <h5 class="mt-4">LinearLayout Implementation Examples</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="code-block">
+                                        <pre><code>&lt;!-- Vertical LinearLayout Example --&gt;
+&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Registration"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" /&gt;
+
+    &lt;EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_marginBottom="10dp" /&gt;
+
+    &lt;EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="10dp" /&gt;
+
+    &lt;Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:backgroundTint="@color/primary"
+        android:textColor="@android:color/white" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="code-block">
+                                        <pre><code>&lt;!-- Horizontal LinearLayout Example --&gt;
+&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"&gt;
+
+    &lt;ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/profile_pic"
+        android:layout_marginEnd="16dp" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"&gt;
+
+        &lt;TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lesley Machola"
+            android:textSize="18sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Android Developer"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow"
+        android:backgroundTint="@color/primary"
+        android:textColor="@android:color/white" /&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">Complex Layout with Weight</h5>
+                        <div class="code-block">
+                                <pre><code>&lt;!-- LinearLayout with weight property --&gt;
+&lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;!-- Header Section --&gt;
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/primary"
+        android:padding="16dp"&gt;
+
+        &lt;TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="My App"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" /&gt;
+
+        &lt;ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@android:color/white" /&gt;
+
+    &lt;/LinearLayout&gt;
+
+    &lt;!-- Content Area with weighted distribution --&gt;
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"&gt;
+
+        &lt;!-- Left Panel --&gt;
+        &lt;ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"&gt;
+
+            &lt;LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"&gt;
+
+                &lt;!-- Navigation items would go here --&gt;
+
+            &lt;/LinearLayout&gt;
+
+        &lt;/ScrollView&gt;
+
+        &lt;!-- Right Panel --&gt;
+        &lt;ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"&gt;
+
+            &lt;LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"&gt;
+
+                &lt;!-- Main content would go here --&gt;
+
+            &lt;/LinearLayout&gt;
+
+        &lt;/ScrollView&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;</code></pre>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>UI Components Explored:</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>TextViews and EditTexts</li>
+                                        <li>Buttons and ImageButtons</li>
+                                        <li>ImageViews</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>CheckBoxes and RadioButtons</li>
+                                        <li>Spinners and SeekBars</li>
+                                        <li>ProgressBars</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>ScrollViews</li>
+                                        <li>RecyclerViews (intro)</li>
+                                        <li>CardViews</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Week 3 Section -->
+<section id="week3" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Week 3: Activities, Data Sharing & Fragments</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="week-card card">
+                    <div class="card-header">
+                        <h3 class="mb-0">Advanced Android Concepts</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p>In the third week, I explored more complex Android concepts including Activity lifecycle, sharing data between components, and implementing ViewPager with Fragments for creating swipeable interfaces.</p>
+
+                        <h5 class="mt-4">Activity Implementation with Intent Data Sharing</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="code-block">
+                                        <pre><code>// MainActivity.java - Sending data
+public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button sendButton = findViewById(R.id.send_button);
+        sendButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("USER_NAME", "Lesley Machola");
+            intent.putExtra("USER_COURSE", "Computer Systems Engineering");
+            startActivityForResult(intent, REQUEST_CODE);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            String response = data.getStringExtra("RESPONSE");
+            Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+        }
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="code-block">
+                                        <pre><code>// DetailActivity.java - Receiving and returning data
+public class DetailActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail);
+
+        // Receive data from MainActivity
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("USER_NAME");
+        String userCourse = intent.getStringExtra("USER_COURSE");
+
+        TextView userInfo = findViewById(R.id.user_info);
+        userInfo.setText("Name: " + userName + "\nCourse: " + userCourse);
+
+        Button returnButton = findViewById(R.id.return_button);
+        returnButton.setOnClickListener(v -> {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("RESPONSE", "Data received successfully!");
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        });
+    }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="mt-4">Fragment Implementation with ViewPager</h5>
+                        <div class="code-block">
+                                <pre><code>// FragmentPagerAdapter implementation
+public class MyPagerAdapter extends FragmentPagerAdapter {
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> fragmentTitleList = new ArrayList<>();
+
+    public MyPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+        fragmentList.add(fragment);
+        fragmentTitleList.add(title);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return fragmentList.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return fragmentList.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return fragmentTitleList.get(position);
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="code-block">
+                                <pre><code>// MainActivity with ViewPager and Fragments
+public class MainActivity extends AppCompatActivity {
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
+
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
+
+        // Add fragments with titles
+        adapter.addFragment(new ProfileFragment(), "Profile");
+        adapter.addFragment(new ProjectsFragment(), "Projects");
+        adapter.addFragment(new SkillsFragment(), "Skills");
+        adapter.addFragment(new ContactFragment(), "Contact");
+
+        viewPager.setAdapter(adapter);
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="code-block">
+                                <pre><code>// Example Fragment implementation
+public class ProfileFragment extends Fragment {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        // Initialize UI components
+        TextView nameText = view.findViewById(R.id.name_text);
+        TextView courseText = view.findViewById(R.id.course_text);
+
+        nameText.setText("Lesley Machola");
+        courseText.setText("Computer Systems Engineering - BAC");
+
+        return view;
+    }
+}</code></pre>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Key Concepts Mastered:</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Activity lifecycle management</li>
+                                        <li>Intent-based data sharing</li>
+                                        <li>Fragment creation and management</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>ViewPager implementation</li>
+                                        <li>TabLayout integration</li>
+                                        <li>Fragment communication patterns</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <img src="https://ui-avatars.com/api/?name=Lesley+Machola&size=300&background=3498db&color=fff&bold=true" alt="Lesley Machola" class="img-fluid rounded-circle shadow" style="max-width: 250px;">
+            </div>
+            <div class="col-lg-8">
+                <h3>Lesley Machola</h3>
+                <p class="lead">Computer Systems Engineering Student</p>
+                <p>I'm a passionate Android developer currently pursuing Computer Systems Engineering at Botswana Accountancy College. My journey in mobile application development has been exciting, and I'm continuously expanding my skills in creating innovative and user-friendly applications.</p>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Education</h5>
+                        <ul>
+                            <li>Botswana Accountancy College</li>
+                            <li>Computer Systems Engineering</li>
+                            <li>Advanced Android Development</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Skills</h5>
+                        <ul>
+                            <li>Java & Kotlin Programming</li>
+                            <li>Android UI/UX Design</li>
+                            <li>REST API Integration</li>
+                            <li>Database Management (SQLite, Room)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <h4>Lesley Machola</h4>
+                <p>Android Developer & Computer Systems Engineering Student</p>
+                <p>Botswana Accountancy College</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <div class="social-icons mb-3">
+                    <a href="https://www.linkedin.com/in/lesley-machola-1351b2240/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/LesleyMachoal"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="http://localhost:63342/Lesley%20Eportfolio/index.html?_ijt=e8kj83mmce2d0ls6804k7mdth&_ij_reload=RELOAD_ON_SAVE"><i class="fab fa-android"></i></a>
+                </div>
+                <p>&copy; 2025 Lesley Machola. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
